@@ -31,6 +31,7 @@ class TodoItems(Resource):
             todoitem = todo_schema.load(request.get_json())
             db.session.add(todoitem)
             db.session.commit()
+            return {"message", "New Item Added"}
 
 
 @td.route("/<int:id>")
@@ -58,4 +59,5 @@ class Todo(Resource):
         text = request.get_json()
         item.text = text
         db.session.commit()
+        return {"message": "Item updated"}
 
