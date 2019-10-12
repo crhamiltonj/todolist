@@ -31,7 +31,7 @@ class TodoItems(Resource):
             todoitem = todo_schema.load(request.get_json())
             db.session.add(todoitem)
             db.session.commit()
-            return {"message", "New Item Added"}
+            return {"message": "New Item Added"}
 
 
 @td.route("/<int:id>")
@@ -54,10 +54,13 @@ class Todo(Resource):
 
     @td.doc("Update text of todo")
     @td.param("id", "The task identifier")
-    def put(self, id, text):
+    def put(self, id):
         item = TodoItem.query.get(id)
-        text = request.get_json()
-        item.text = text
+        req = request.get_json()
+        print(req["text"])
+        item.text = req["text"]
         db.session.commit()
-        return {"message": "Item updated"}
+        return todo_schema.dump(item)
+
+
 
