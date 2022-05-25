@@ -36,7 +36,7 @@ pkg-resources==0.0.0
 pluggy==0.13.0
 py==1.8.0
 pycparser==2.19
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.2
 pyrsistent==0.15.4
 pytest==5.2.1
